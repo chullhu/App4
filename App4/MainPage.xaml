@@ -1,0 +1,58 @@
+﻿<Page
+    x:Class="App4.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:App4"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:converter="using:App4"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    
+    <Page.Resources>
+        <converter:DataConv x:Key="DataConv"/>
+    </Page.Resources>
+
+    <!--<phone:PhoneApplicationPage.Resources >
+        <converter:DataConv xmlns:converter="using:App4" x:Key="DataConv"></converter:DataConv>
+    </phone:PhoneApplicationPage.Resources>-->
+    <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
+        <StackPanel>
+            <StackPanel>
+                <TextBlock>Enter </TextBlock>
+                <TextBox Name="txtPincode"></TextBox>
+                <Button Name="btnGetData" Content="Get Data" Click="btnGetData_Click" />
+            </StackPanel>
+            <ProgressBar IsIndeterminate="true" Visibility="Collapsed" Name="pbWeather" />
+            <StackPanel Name="spWeatherInfo">
+                <StackPanel Orientation="Horizontal">
+
+                    <TextBlock Margin="4" Name="txtCity" Text="{Binding city.name }"/>
+
+                    <TextBlock Margin="4" Text="{Binding city.country}" />
+                </StackPanel>
+                <StackPanel>
+                    <ListBox ItemsSource="{Binding list}">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Margin="8" >
+                                    <StackPanel Orientation="Horizontal" Margin="2">
+                                        <TextBlock  Text="{Binding Path=dt, Converter={StaticResource DataConv}}"  Margin="2" />
+                                        <TextBlock  Text="{Binding weather[0].description}" Margin="2" />
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal" Margin="2">
+                                        <TextBlock Margin="2">Min Temp</TextBlock>
+                                        <TextBlock Margin="2" Text="{Binding temp.min}" />
+                                        <TextBlock Margin="2">Max Temp</TextBlock>
+                                        <TextBlock Margin="2" Text="{Binding temp.max}" />
+                                        <Image/>
+                                    </StackPanel>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Page>
