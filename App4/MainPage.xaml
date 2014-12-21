@@ -6,9 +6,8 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:converter="using:App4"
-    mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-    
+    mc:Ignorable="d" Background="Black">
+
     <Page.Resources>
         <converter:DataConv x:Key="DataConv"/>
     </Page.Resources>
@@ -16,12 +15,12 @@
     <!--<phone:PhoneApplicationPage.Resources >
         <converter:DataConv xmlns:converter="using:App4" x:Key="DataConv"></converter:DataConv>
     </phone:PhoneApplicationPage.Resources>-->
-    <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
+    <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0" Background="Black">
         <StackPanel>
-            <StackPanel>
-                <TextBlock>Enter </TextBlock>
-                <TextBox Name="txtPincode"></TextBox>
-                <Button Name="btnGetData" Content="Get Data" Click="btnGetData_Click" />
+            <StackPanel Orientation="Horizontal">
+                <TextBlock />
+                <Button x:Name="btnGetData" Content="Save" Click="btnGetData_Click" HorizontalAlignment="Right" VerticalAlignment="Bottom" />
+                <TextBox x:Name="txtPincode"/>
             </StackPanel>
             <ProgressBar IsIndeterminate="true" Visibility="Collapsed" Name="pbWeather" />
             <StackPanel Name="spWeatherInfo">
@@ -54,5 +53,26 @@
                 </StackPanel>
             </StackPanel>
         </StackPanel>
+
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom">
+            <ListBox ScrollViewer.VerticalScrollBarVisibility="Disabled" ScrollViewer.HorizontalScrollBarVisibility="Auto">
+
+
+            </ListBox>
+        </StackPanel>
     </Grid>
+
+    <Page.BottomAppBar>
+        <CommandBar x:Name="bar" ClosedDisplayMode="Minimal" Background="#FFF5CC4E">
+            <CommandBar.PrimaryCommands>
+                <AppBarButton x:Name="location" Label="location"/>
+                <AppBarButton x:Name="refresh" Label="refresh"/>
+            </CommandBar.PrimaryCommands>
+            <CommandBar.SecondaryCommands>
+                <AppBarToggleButton Label="settings"/>
+                <AppBarToggleButton Label="about"/>
+            </CommandBar.SecondaryCommands>
+        </CommandBar>
+    </Page.BottomAppBar>
+
 </Page>

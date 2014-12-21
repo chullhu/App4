@@ -113,7 +113,7 @@ namespace App4
                 {
                     pbWeather.Visibility = Visibility.Visible;
                     client.BaseAddress = new Uri("http://api.openweathermap.org/");
-                    //var url = "data/2.5/forecast/daily?q=" + txtPincode.Text + "&mode=json&units=metric&cnt=7";
+                    //Сделать проверку на сохраненные данные и впиливать их вместо txtPincode.
                     var url = "data/2.5/forecast/daily?q=" + txtPincode.Text + "&lat=0&lon=0&cnt=10&mode=json&units=metric";
 
                     client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
@@ -138,6 +138,53 @@ namespace App4
                 dialog.ShowAsync();
                 pbWeather.Visibility = Visibility.Collapsed;
             }
+
+            AddCity.Visibility = Visibility.Collapsed;
+        }
+
+        private void location_Click(object sender, RoutedEventArgs e)
+        {
+            AddCity.Visibility = Visibility.Visible;
+        }
+
+        private async void refresh_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                using (HttpClient client = new HttpClient())
+                {
+                    pbWeather.Visibility = Visibility.Visible;
+                    client.BaseAddress = new Uri("http://api.openweathermap.org/");
+                    //Вместо txtPincode впихнуть сохраненные данные!
+                    var url = "data/2.5/forecast/daily?q=" + txtPincode.Text + "&lat=0&lon=0&cnt=10&mode=json&units=metric"; 
+
+                    client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                    HttpResponseMessage resp = await client.GetAsync(String.Format(url, txtPincode.Text));
+
+                    if (resp.IsSuccessStatusCode)
+                    {
+                        var data = resp.Content.ReadAsStringAsync();
+                        var weatherData = JsonConvert.DeserializeObject<RootObject>(data.Result.ToString());
+
+                        spWeatherInfo.DataContext = weatherData;
+                    }
+
+                    pbWeather.Visibility = Visibility.Collapsed;
+
+                }
+            }
+
+            catch (Exception ex)
+            {
+                MessageDialog dialog = new MessageDialog(ex.Message);
+                dialog.ShowAsync();
+                pbWeather.Visibility = Visibility.Collapsed;
+            }
+        }
+
+        private void ContentPanel_Loaded(object sender, RoutedEventArgs e)
+        {
+            
         } 
     }
 }

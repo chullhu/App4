@@ -12,6 +12,27 @@ namespace App4.Converter
 
         public object Convert(object value, Type targetType, object parameter, string language)
         {
+            //var icon = (Icon)value;
+            //var path = String.Empty;
+
+            //switch (icon)
+            //{
+            //    case Icon.Sunny:
+            //        path = "assets/sunny.png";
+            //        break;
+            //    case Icon.Cloudy:
+            //        path = "assets/cloudy.png";
+            //        break;
+            //    case Icon.Rainy:
+            //        path = "assets/rainy.png";
+            //        break;
+            //    case Icon.Snowy:
+            //        path = "assets/snowy.png";
+            //        break;
+            //    default:
+            //        break;
+            //}
+            //return path;
             throw new NotImplementedException();
         }
 

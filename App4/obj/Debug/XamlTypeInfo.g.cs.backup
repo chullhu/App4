@@ -124,21 +124,47 @@ namespace App4.App4_XamlTypeInfo
 
         private void InitTypeTables()
         {
-            _typeNameTable = new string[6];
+            _typeNameTable = new string[19];
             _typeNameTable[0] = "App4.DataConv";
             _typeNameTable[1] = "Object";
             _typeNameTable[2] = "App4.MainPage";
             _typeNameTable[3] = "Windows.UI.Xaml.Controls.Page";
             _typeNameTable[4] = "Windows.UI.Xaml.Controls.UserControl";
-            _typeNameTable[5] = "App4.SettingsPage";
+            _typeNameTable[5] = "System.Collections.ObjectModel.ObservableCollection`1<App4.Day>";
+            _typeNameTable[6] = "System.Collections.ObjectModel.Collection`1<App4.Day>";
+            _typeNameTable[7] = "App4.Day";
+            _typeNameTable[8] = "Int32";
+            _typeNameTable[9] = "App4.Temp";
+            _typeNameTable[10] = "Double";
+            _typeNameTable[11] = "System.Collections.Generic.List`1<App4.Weather>";
+            _typeNameTable[12] = "App4.Weather";
+            _typeNameTable[13] = "String";
+            _typeNameTable[14] = "App4.Icon";
+            _typeNameTable[15] = "System.Enum";
+            _typeNameTable[16] = "System.ValueType";
+            _typeNameTable[17] = "System.Nullable`1<Double>";
+            _typeNameTable[18] = "App4.SettingsPage";
 
-            _typeTable = new global::System.Type[6];
+            _typeTable = new global::System.Type[19];
             _typeTable[0] = typeof(global::App4.DataConv);
             _typeTable[1] = typeof(global::System.Object);
             _typeTable[2] = typeof(global::App4.MainPage);
             _typeTable[3] = typeof(global::Windows.UI.Xaml.Controls.Page);
             _typeTable[4] = typeof(global::Windows.UI.Xaml.Controls.UserControl);
-            _typeTable[5] = typeof(global::App4.SettingsPage);
+            _typeTable[5] = typeof(global::System.Collections.ObjectModel.ObservableCollection<global::App4.Day>);
+            _typeTable[6] = typeof(global::System.Collections.ObjectModel.Collection<global::App4.Day>);
+            _typeTable[7] = typeof(global::App4.Day);
+            _typeTable[8] = typeof(global::System.Int32);
+            _typeTable[9] = typeof(global::App4.Temp);
+            _typeTable[10] = typeof(global::System.Double);
+            _typeTable[11] = typeof(global::System.Collections.Generic.List<global::App4.Weather>);
+            _typeTable[12] = typeof(global::App4.Weather);
+            _typeTable[13] = typeof(global::System.String);
+            _typeTable[14] = typeof(global::App4.Icon);
+            _typeTable[15] = typeof(global::System.Enum);
+            _typeTable[16] = typeof(global::System.ValueType);
+            _typeTable[17] = typeof(global::System.Nullable<global::System.Double>);
+            _typeTable[18] = typeof(global::App4.SettingsPage);
         }
 
         private int LookupTypeIndexByName(string typeName)
@@ -175,7 +201,31 @@ namespace App4.App4_XamlTypeInfo
 
         private object Activate_0_DataConv() { return new global::App4.DataConv(); }
         private object Activate_2_MainPage() { return new global::App4.MainPage(); }
-        private object Activate_5_SettingsPage() { return new global::App4.SettingsPage(); }
+        private object Activate_5_ObservableCollection() { return new global::System.Collections.ObjectModel.ObservableCollection<global::App4.Day>(); }
+        private object Activate_6_Collection() { return new global::System.Collections.ObjectModel.Collection<global::App4.Day>(); }
+        private object Activate_7_Day() { return new global::App4.Day(); }
+        private object Activate_9_Temp() { return new global::App4.Temp(); }
+        private object Activate_11_List() { return new global::System.Collections.Generic.List<global::App4.Weather>(); }
+        private object Activate_12_Weather() { return new global::App4.Weather(); }
+        private object Activate_18_SettingsPage() { return new global::App4.SettingsPage(); }
+        private void VectorAdd_5_ObservableCollection(object instance, object item)
+        {
+            var collection = (global::System.Collections.Generic.ICollection<global::App4.Day>)instance;
+            var newItem = (global::App4.Day)item;
+            collection.Add(newItem);
+        }
+        private void VectorAdd_6_Collection(object instance, object item)
+        {
+            var collection = (global::System.Collections.Generic.ICollection<global::App4.Day>)instance;
+            var newItem = (global::App4.Day)item;
+            collection.Add(newItem);
+        }
+        private void VectorAdd_11_List(object instance, object item)
+        {
+            var collection = (global::System.Collections.Generic.ICollection<global::App4.Weather>)instance;
+            var newItem = (global::App4.Weather)item;
+            collection.Add(newItem);
+        }
 
         private global::Windows.UI.Xaml.Markup.IXamlType CreateXamlType(int typeIndex)
         {
@@ -201,6 +251,8 @@ namespace App4.App4_XamlTypeInfo
             case 2:   //  App4.MainPage
                 userType = new global::App4.App4_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
                 userType.Activator = Activate_2_MainPage;
+                userType.AddMemberName("DayList");
+                userType.AddMemberName("CurrentDay");
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
@@ -213,9 +265,102 @@ namespace App4.App4_XamlTypeInfo
                 xamlType = new global::App4.App4_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 5:   //  App4.SettingsPage
+            case 5:   //  System.Collections.ObjectModel.ObservableCollection`1<App4.Day>
+                userType = new global::App4.App4_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("System.Collections.ObjectModel.Collection`1<App4.Day>"));
+                userType.CollectionAdd = VectorAdd_5_ObservableCollection;
+                userType.SetIsReturnTypeStub();
+                xamlType = userType;
+                break;
+
+            case 6:   //  System.Collections.ObjectModel.Collection`1<App4.Day>
+                userType = new global::App4.App4_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
+                userType.Activator = Activate_6_Collection;
+                userType.CollectionAdd = VectorAdd_6_Collection;
+                xamlType = userType;
+                break;
+
+            case 7:   //  App4.Day
+                userType = new global::App4.App4_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
+                userType.Activator = Activate_7_Day;
+                userType.AddMemberName("dt");
+                userType.AddMemberName("temp");
+                userType.AddMemberName("pressure");
+                userType.AddMemberName("humidity");
+                userType.AddMemberName("weather");
+                userType.AddMemberName("speed");
+                userType.AddMemberName("deg");
+                userType.AddMemberName("clouds");
+                userType.AddMemberName("snow");
+                userType.SetIsLocalType();
+                xamlType = userType;
+                break;
+
+            case 8:   //  Int32
+                xamlType = new global::App4.App4_XamlTypeInfo.XamlSystemBaseType(typeName, type);
+                break;
+
+            case 9:   //  App4.Temp
+                userType = new global::App4.App4_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
+                userType.SetIsReturnTypeStub();
+                userType.SetIsLocalType();
+                xamlType = userType;
+                break;
+
+            case 10:   //  Double
+                xamlType = new global::App4.App4_XamlTypeInfo.XamlSystemBaseType(typeName, type);
+                break;
+
+            case 11:   //  System.Collections.Generic.List`1<App4.Weather>
+                userType = new global::App4.App4_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
+                userType.CollectionAdd = VectorAdd_11_List;
+                userType.SetIsReturnTypeStub();
+                xamlType = userType;
+                break;
+
+            case 12:   //  App4.Weather
+                userType = new global::App4.App4_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
+                userType.Activator = Activate_12_Weather;
+                userType.AddMemberName("id");
+                userType.AddMemberName("main");
+                userType.AddMemberName("description");
+                userType.AddMemberName("icon");
+                userType.SetIsLocalType();
+                xamlType = userType;
+                break;
+
+            case 13:   //  String
+                xamlType = new global::App4.App4_XamlTypeInfo.XamlSystemBaseType(typeName, type);
+                break;
+
+            case 14:   //  App4.Icon
+                userType = new global::App4.App4_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("System.Enum"));
+                userType.AddEnumValue("Sunny", global::App4.Icon.Sunny);
+                userType.AddEnumValue("Cloudy", global::App4.Icon.Cloudy);
+                userType.AddEnumValue("Rainy", global::App4.Icon.Rainy);
+                userType.AddEnumValue("Snowy", global::App4.Icon.Snowy);
+                userType.SetIsLocalType();
+                xamlType = userType;
+                break;
+
+            case 15:   //  System.Enum
+                userType = new global::App4.App4_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("System.ValueType"));
+                xamlType = userType;
+                break;
+
+            case 16:   //  System.ValueType
+                userType = new global::App4.App4_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
+                xamlType = userType;
+                break;
+
+            case 17:   //  System.Nullable`1<Double>
+                userType = new global::App4.App4_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("System.ValueType"));
+                userType.SetIsReturnTypeStub();
+                xamlType = userType;
+                break;
+
+            case 18:   //  App4.SettingsPage
                 userType = new global::App4.App4_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_5_SettingsPage;
+                userType.Activator = Activate_18_SettingsPage;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
@@ -224,11 +369,255 @@ namespace App4.App4_XamlTypeInfo
         }
 
 
+        private object get_0_MainPage_DayList(object instance)
+        {
+            var that = (global::App4.MainPage)instance;
+            return that.DayList;
+        }
+        private void set_0_MainPage_DayList(object instance, object Value)
+        {
+            var that = (global::App4.MainPage)instance;
+            that.DayList = (global::System.Collections.ObjectModel.ObservableCollection<global::App4.Day>)Value;
+        }
+        private object get_1_Day_dt(object instance)
+        {
+            var that = (global::App4.Day)instance;
+            return that.dt;
+        }
+        private void set_1_Day_dt(object instance, object Value)
+        {
+            var that = (global::App4.Day)instance;
+            that.dt = (global::System.Int32)Value;
+        }
+        private object get_2_Day_temp(object instance)
+        {
+            var that = (global::App4.Day)instance;
+            return that.temp;
+        }
+        private void set_2_Day_temp(object instance, object Value)
+        {
+            var that = (global::App4.Day)instance;
+            that.temp = (global::App4.Temp)Value;
+        }
+        private object get_3_Day_pressure(object instance)
+        {
+            var that = (global::App4.Day)instance;
+            return that.pressure;
+        }
+        private void set_3_Day_pressure(object instance, object Value)
+        {
+            var that = (global::App4.Day)instance;
+            that.pressure = (global::System.Double)Value;
+        }
+        private object get_4_Day_humidity(object instance)
+        {
+            var that = (global::App4.Day)instance;
+            return that.humidity;
+        }
+        private void set_4_Day_humidity(object instance, object Value)
+        {
+            var that = (global::App4.Day)instance;
+            that.humidity = (global::System.Int32)Value;
+        }
+        private object get_5_Day_weather(object instance)
+        {
+            var that = (global::App4.Day)instance;
+            return that.weather;
+        }
+        private void set_5_Day_weather(object instance, object Value)
+        {
+            var that = (global::App4.Day)instance;
+            that.weather = (global::System.Collections.Generic.List<global::App4.Weather>)Value;
+        }
+        private object get_6_Weather_id(object instance)
+        {
+            var that = (global::App4.Weather)instance;
+            return that.id;
+        }
+        private void set_6_Weather_id(object instance, object Value)
+        {
+            var that = (global::App4.Weather)instance;
+            that.id = (global::System.Int32)Value;
+        }
+        private object get_7_Weather_main(object instance)
+        {
+            var that = (global::App4.Weather)instance;
+            return that.main;
+        }
+        private void set_7_Weather_main(object instance, object Value)
+        {
+            var that = (global::App4.Weather)instance;
+            that.main = (global::System.String)Value;
+        }
+        private object get_8_Weather_description(object instance)
+        {
+            var that = (global::App4.Weather)instance;
+            return that.description;
+        }
+        private void set_8_Weather_description(object instance, object Value)
+        {
+            var that = (global::App4.Weather)instance;
+            that.description = (global::System.String)Value;
+        }
+        private object get_9_Weather_icon(object instance)
+        {
+            var that = (global::App4.Weather)instance;
+            return that.icon;
+        }
+        private void set_9_Weather_icon(object instance, object Value)
+        {
+            var that = (global::App4.Weather)instance;
+            that.icon = (global::App4.Icon)Value;
+        }
+        private object get_10_Day_speed(object instance)
+        {
+            var that = (global::App4.Day)instance;
+            return that.speed;
+        }
+        private void set_10_Day_speed(object instance, object Value)
+        {
+            var that = (global::App4.Day)instance;
+            that.speed = (global::System.Double)Value;
+        }
+        private object get_11_Day_deg(object instance)
+        {
+            var that = (global::App4.Day)instance;
+            return that.deg;
+        }
+        private void set_11_Day_deg(object instance, object Value)
+        {
+            var that = (global::App4.Day)instance;
+            that.deg = (global::System.Int32)Value;
+        }
+        private object get_12_Day_clouds(object instance)
+        {
+            var that = (global::App4.Day)instance;
+            return that.clouds;
+        }
+        private void set_12_Day_clouds(object instance, object Value)
+        {
+            var that = (global::App4.Day)instance;
+            that.clouds = (global::System.Int32)Value;
+        }
+        private object get_13_Day_snow(object instance)
+        {
+            var that = (global::App4.Day)instance;
+            return that.snow;
+        }
+        private void set_13_Day_snow(object instance, object Value)
+        {
+            var that = (global::App4.Day)instance;
+            that.snow = (global::System.Nullable<global::System.Double>)Value;
+        }
+        private object get_14_MainPage_CurrentDay(object instance)
+        {
+            var that = (global::App4.MainPage)instance;
+            return that.CurrentDay;
+        }
+        private void set_14_MainPage_CurrentDay(object instance, object Value)
+        {
+            var that = (global::App4.MainPage)instance;
+            that.CurrentDay = (global::App4.Day)Value;
+        }
 
         private global::Windows.UI.Xaml.Markup.IXamlMember CreateXamlMember(string longMemberName)
         {
             global::App4.App4_XamlTypeInfo.XamlMember xamlMember = null;
-            // No Local Properties
+            global::App4.App4_XamlTypeInfo.XamlUserType userType;
+
+            switch (longMemberName)
+            {
+            case "App4.MainPage.DayList":
+                userType = (global::App4.App4_XamlTypeInfo.XamlUserType)GetXamlTypeByName("App4.MainPage");
+                xamlMember = new global::App4.App4_XamlTypeInfo.XamlMember(this, "DayList", "System.Collections.ObjectModel.ObservableCollection`1<App4.Day>");
+                xamlMember.Getter = get_0_MainPage_DayList;
+                xamlMember.Setter = set_0_MainPage_DayList;
+                break;
+            case "App4.Day.dt":
+                userType = (global::App4.App4_XamlTypeInfo.XamlUserType)GetXamlTypeByName("App4.Day");
+                xamlMember = new global::App4.App4_XamlTypeInfo.XamlMember(this, "dt", "Int32");
+                xamlMember.Getter = get_1_Day_dt;
+                xamlMember.Setter = set_1_Day_dt;
+                break;
+            case "App4.Day.temp":
+                userType = (global::App4.App4_XamlTypeInfo.XamlUserType)GetXamlTypeByName("App4.Day");
+                xamlMember = new global::App4.App4_XamlTypeInfo.XamlMember(this, "temp", "App4.Temp");
+                xamlMember.Getter = get_2_Day_temp;
+                xamlMember.Setter = set_2_Day_temp;
+                break;
+            case "App4.Day.pressure":
+                userType = (global::App4.App4_XamlTypeInfo.XamlUserType)GetXamlTypeByName("App4.Day");
+                xamlMember = new global::App4.App4_XamlTypeInfo.XamlMember(this, "pressure", "Double");
+                xamlMember.Getter = get_3_Day_pressure;
+                xamlMember.Setter = set_3_Day_pressure;
+                break;
+            case "App4.Day.humidity":
+                userType = (global::App4.App4_XamlTypeInfo.XamlUserType)GetXamlTypeByName("App4.Day");
+                xamlMember = new global::App4.App4_XamlTypeInfo.XamlMember(this, "humidity", "Int32");
+                xamlMember.Getter = get_4_Day_humidity;
+                xamlMember.Setter = set_4_Day_humidity;
+                break;
+            case "App4.Day.weather":
+                userType = (global::App4.App4_XamlTypeInfo.XamlUserType)GetXamlTypeByName("App4.Day");
+                xamlMember = new global::App4.App4_XamlTypeInfo.XamlMember(this, "weather", "System.Collections.Generic.List`1<App4.Weather>");
+                xamlMember.Getter = get_5_Day_weather;
+                xamlMember.Setter = set_5_Day_weather;
+                break;
+            case "App4.Weather.id":
+                userType = (global::App4.App4_XamlTypeInfo.XamlUserType)GetXamlTypeByName("App4.Weather");
+                xamlMember = new global::App4.App4_XamlTypeInfo.XamlMember(this, "id", "Int32");
+                xamlMember.Getter = get_6_Weather_id;
+                xamlMember.Setter = set_6_Weather_id;
+                break;
+            case "App4.Weather.main":
+                userType = (global::App4.App4_XamlTypeInfo.XamlUserType)GetXamlTypeByName("App4.Weather");
+                xamlMember = new global::App4.App4_XamlTypeInfo.XamlMember(this, "main", "String");
+                xamlMember.Getter = get_7_Weather_main;
+                xamlMember.Setter = set_7_Weather_main;
+                break;
+            case "App4.Weather.description":
+                userType = (global::App4.App4_XamlTypeInfo.XamlUserType)GetXamlTypeByName("App4.Weather");
+                xamlMember = new global::App4.App4_XamlTypeInfo.XamlMember(this, "description", "String");
+                xamlMember.Getter = get_8_Weather_description;
+                xamlMember.Setter = set_8_Weather_description;
+                break;
+            case "App4.Weather.icon":
+                userType = (global::App4.App4_XamlTypeInfo.XamlUserType)GetXamlTypeByName("App4.Weather");
+                xamlMember = new global::App4.App4_XamlTypeInfo.XamlMember(this, "icon", "App4.Icon");
+                xamlMember.Getter = get_9_Weather_icon;
+                xamlMember.Setter = set_9_Weather_icon;
+                break;
+            case "App4.Day.speed":
+                userType = (global::App4.App4_XamlTypeInfo.XamlUserType)GetXamlTypeByName("App4.Day");
+                xamlMember = new global::App4.App4_XamlTypeInfo.XamlMember(this, "speed", "Double");
+                xamlMember.Getter = get_10_Day_speed;
+                xamlMember.Setter = set_10_Day_speed;
+                break;
+            case "App4.Day.deg":
+                userType = (global::App4.App4_XamlTypeInfo.XamlUserType)GetXamlTypeByName("App4.Day");
+                xamlMember = new global::App4.App4_XamlTypeInfo.XamlMember(this, "deg", "Int32");
+                xamlMember.Getter = get_11_Day_deg;
+                xamlMember.Setter = set_11_Day_deg;
+                break;
+            case "App4.Day.clouds":
+                userType = (global::App4.App4_XamlTypeInfo.XamlUserType)GetXamlTypeByName("App4.Day");
+                xamlMember = new global::App4.App4_XamlTypeInfo.XamlMember(this, "clouds", "Int32");
+                xamlMember.Getter = get_12_Day_clouds;
+                xamlMember.Setter = set_12_Day_clouds;
+                break;
+            case "App4.Day.snow":
+                userType = (global::App4.App4_XamlTypeInfo.XamlUserType)GetXamlTypeByName("App4.Day");
+                xamlMember = new global::App4.App4_XamlTypeInfo.XamlMember(this, "snow", "System.Nullable`1<Double>");
+                xamlMember.Getter = get_13_Day_snow;
+                xamlMember.Setter = set_13_Day_snow;
+                break;
+            case "App4.MainPage.CurrentDay":
+                userType = (global::App4.App4_XamlTypeInfo.XamlUserType)GetXamlTypeByName("App4.MainPage");
+                xamlMember = new global::App4.App4_XamlTypeInfo.XamlMember(this, "CurrentDay", "App4.Day");
+                xamlMember.Getter = get_14_MainPage_CurrentDay;
+                xamlMember.Setter = set_14_MainPage_CurrentDay;
+                break;
+            }
             return xamlMember;
         }
     }

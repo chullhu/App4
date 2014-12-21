@@ -5,15 +5,21 @@
     xmlns:local="using:App4"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    mc:Ignorable="d">
+    <Page.Background>
+        <SolidColorBrush Color="{ThemeResource PhoneBackgroundColor}"/>
+    </Page.Background>
 
-    <Grid>
+    <Grid Background="#FF462544">
         <StackPanel Orientation="Vertical" Margin="10">
             <TextBlock Text="Enter city:" FontSize="20"/>
             <TextBox x:Name="txtCity"/>
-            <Button Content="Save"/>
+            <Button x:ConnectionId='1' Content="Save"                     />
         </StackPanel>
     </Grid>
+
+    
 </Page>
+    
+    
 
