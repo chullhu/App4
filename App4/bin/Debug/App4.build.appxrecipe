@@ -22,6 +22,9 @@
     <AppxPackagedFile Include="C:\Users\Дмитрий\Documents\Visual Studio 2013\Projects\App4\packages\Newtonsoft.Json.6.0.6\lib\portable-net40+sl5+wp80+win8+wpa81\Newtonsoft.Json.dll">
       <PackagePath>Newtonsoft.Json.dll</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Дмитрий\Documents\Visual Studio 2013\Projects\App4\App4\Assets\Icons\location.png">
+      <PackagePath>Assets\Icons\location.png</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Дмитрий\Documents\Visual Studio 2013\Projects\App4\App4\Assets\Logo.scale-240.png">
       <PackagePath>Assets\Logo.scale-240.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>

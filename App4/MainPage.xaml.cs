@@ -87,7 +87,7 @@ namespace App4
             }
         }
 
-        //DayList 
+        
 
         Geolocator geo = null;
 
@@ -97,6 +97,9 @@ namespace App4
             this.InitializeComponent();
 
             this.NavigationCacheMode = NavigationCacheMode.Required;
+
+
+            
         }
 
         
@@ -185,6 +188,11 @@ namespace App4
         private void ContentPanel_Loaded(object sender, RoutedEventArgs e)
         {
             
+        }
+
+        private void location_Click_1(object sender, RoutedEventArgs e)
+        {
+            AddCity.Visibility = Visibility.Visible;
         } 
     }
 }

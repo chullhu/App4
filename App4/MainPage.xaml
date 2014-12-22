@@ -15,14 +15,17 @@
     <!--<phone:PhoneApplicationPage.Resources >
         <converter:DataConv xmlns:converter="using:App4" x:Key="DataConv"></converter:DataConv>
     </phone:PhoneApplicationPage.Resources>-->
-    <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0" Background="Black">
+    <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0" Background="#FF462544">
         <StackPanel>
-            <StackPanel Orientation="Horizontal">
+
+            <StackPanel Orientation="Vertical" x:Name="AddCity" Visibility="Collapsed">
                 <TextBlock />
-                <Button x:Name="btnGetData" Content="Save" Click="btnGetData_Click" HorizontalAlignment="Right" VerticalAlignment="Bottom" />
                 <TextBox x:Name="txtPincode"/>
+                <Button x:Name="btnGetData" Content="Save" Click="btnGetData_Click" HorizontalAlignment="Center" VerticalAlignment="Bottom" />
             </StackPanel>
             <ProgressBar IsIndeterminate="true" Visibility="Collapsed" Name="pbWeather" />
+
+
             <StackPanel Name="spWeatherInfo">
                 <StackPanel Orientation="Horizontal">
 
@@ -56,8 +59,10 @@
 
         <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom">
             <ListBox ScrollViewer.VerticalScrollBarVisibility="Disabled" ScrollViewer.HorizontalScrollBarVisibility="Auto">
-
-
+                <StackPanel Orientation="Vertical">
+                    <TextBlock />
+                    <TextBlock />
+                </StackPanel>
             </ListBox>
         </StackPanel>
     </Grid>
@@ -65,8 +70,12 @@
     <Page.BottomAppBar>
         <CommandBar x:Name="bar" ClosedDisplayMode="Minimal" Background="#FFF5CC4E">
             <CommandBar.PrimaryCommands>
-                <AppBarButton x:Name="location" Label="location"/>
-                <AppBarButton x:Name="refresh" Label="refresh"/>
+                <AppBarButton x:Name="location" Label="location" Click="location_Click_1">
+                    <AppBarButton.Icon>
+                        <SymbolIcon/>
+                    </AppBarButton.Icon>
+                </AppBarButton>
+                <AppBarButton x:Name="refresh" Label="refresh" Icon="Refresh"/>
             </CommandBar.PrimaryCommands>
             <CommandBar.SecondaryCommands>
                 <AppBarToggleButton Label="settings"/>

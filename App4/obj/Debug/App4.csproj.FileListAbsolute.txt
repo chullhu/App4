@@ -38,3 +38,4 @@ C:\Users\Дмитрий\Documents\Visual Studio 2013\Projects\App4\App4\obj\Debu
 C:\Users\Дмитрий\Documents\Visual Studio 2013\Projects\App4\App4\obj\Debug\qualifiers.txt.intermediate
 C:\Users\Дмитрий\Documents\Visual Studio 2013\Projects\App4\App4\obj\Debug\MultipleQualifiersPerDimensionFound.txt
 C:\Users\Дмитрий\Documents\Visual Studio 2013\Projects\App4\App4\obj\Debug\ProjectArchitectures.txt
+C:\Users\Дмитрий\Documents\Visual Studio 2013\Projects\App4\App4\obj\Debug\App4.csprojResolveAssemblyReference.cache
